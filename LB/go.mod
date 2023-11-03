@@ -1,3 +1,3 @@
-module github.com/LukaMacharashvili/LB
+module github.com/LukaMacharashvili/Load-Balancer
 
 go 1.18

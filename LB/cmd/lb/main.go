@@ -6,8 +6,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/LukaMacharashvili/LB/internal/utils/slices"
-	"github.com/LukaMacharashvili/LB/internal/utils/urls"
+	"github.com/LukaMacharashvili/Load-Balancer/internal/utils/slices"
+	"github.com/LukaMacharashvili/Load-Balancer/internal/utils/urls"
 )
 
 func healthCheck(targetUrlString string) bool {
