@@ -40,4 +40,4 @@ go run .
 ## Test the LB
 
 Send a request to the LB (http://localhost:3002)
-You can check the logs of the LB to see the requests being routed to the different servers
+You can check the logs of the example servers to see the requests being routed to the different servers

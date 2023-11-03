@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"sync"
 	"time"
 
 	"github.com/LukaMacharashvili/LB/internal/utils/slices"
@@ -37,16 +38,21 @@ func healthCheckScheduler(interval time.Duration, fullTargetUrls *[]string, targ
 	}()
 }
 
+var (
+	mu    sync.Mutex
+	count int
+)
+
 func main() {
-	count := 0
+	mu.Lock()
+	defer mu.Unlock()
 
 	targetUrls := urls.GetTargetUrlsFromEnv()
 	fullTargetUrls := targetUrls
 
-	proxy := urls.GetProxyFromUrlString(targetUrls[count])
-
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Printf("Request to %s\n", targetUrls[count])
+		proxy := urls.GetProxyFromUrlString(targetUrls[count])
 		count = (count + 1) % len(targetUrls)
 		proxy.ServeHTTP(w, r)
 	})
