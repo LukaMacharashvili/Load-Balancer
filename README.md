@@ -6,7 +6,7 @@
 ## Install dependencies for the example server
 
 ```bash
-cd example-server
+cd example
 npm install
 cd ..
 ```
@@ -22,7 +22,7 @@ cd ..
 ## Run the example server twice
 
 ```bash
-cd example-server
+cd example
 
 export PORT=3000
 node index.js
